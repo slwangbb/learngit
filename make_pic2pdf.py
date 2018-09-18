@@ -13,7 +13,9 @@ def file_name(file_dir, suffix = ".jpg"):
         for file in files:
             if os.path.splitext(file)[1] == suffix:
                 L.append(os.path.join(root, file))
-    L.sort()
+    #os.path.split分离路径和文件名，splitext分离文件名前后缀内容
+    #用key=lambda定义排序函数
+    L.sort(key=lambda x:int(os.path.splitext(os.path.split(x)[1])[0]))
     return L
  
 def conpdf(f_pdf , filedir, suffix):
@@ -53,4 +55,4 @@ def conpdf(f_pdf , filedir, suffix):
     print('Image to pdf success!')
 
 if __name__ == '__main__':
-    conpdf("C:\\资料\\新资料\\学习\\python\\ppt\\test.pdf", "C:\\资料\\新资料\\学习\\python\\ppt", ".jpg")
+    conpdf("E:\\汪圣利\\python\\ppt\\test.pdf", "E:\\汪圣利\\python\\ppt", ".jpg")
